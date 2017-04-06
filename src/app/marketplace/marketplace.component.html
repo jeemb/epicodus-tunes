@@ -1,8 +1,10 @@
 <h2>Marketplace</h2>
 
 <p>All our fine products will be listed here shortly!</p>
+<button (click)="setSortValue($event.target.value)" value="low">Artists: A-M</button>
+<button (click)="setSortValue($event.target.value)" value="high">Artists: N-Z</button>
 
-<div *ngFor="let album of albums | async" class="panel panel-default">
+<div *ngFor="let album of albums | async | artist:sortValue" class="panel panel-default">
   <div class="panel-body">
     <h3 (click)="goToDetailPage(album)"><em>{{album.title}}</em> by {{album.artist}}</h3>
     <div *ngIf="currentRoute === '/admin'">

@@ -15,6 +15,8 @@ export class MarketplaceComponent implements OnInit  {
   albums: FirebaseListObservable<any[]>;
   currentRoute: string = this.router.url;
 
+  sortValue = "all";
+
   constructor(
     private router: Router,
     private albumService: AlbumService,
@@ -26,5 +28,9 @@ export class MarketplaceComponent implements OnInit  {
 
  goToDetailPage(clickedAlbum) {
    this.router.navigate(['albums', clickedAlbum.$key]);
- };
+ }
+
+ setSortValue(value: string) {
+   this.sortValue = value;
+ }
 }
